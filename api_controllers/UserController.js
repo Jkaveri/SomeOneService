@@ -7,8 +7,6 @@
  */
 
 var User = require('../models/User').model;
-var router = require('express').Router();
-
 
 module.exports = function(router, passport) {
 
@@ -27,12 +25,33 @@ module.exports = function(router, passport) {
    */
   router.post('/users',function(req, res){
     var body = req.body;
-    var user = new User(body);
 
-    user.save(function(err, user){
-      if(!err) return err;
+    var user = new User({
+      email:body.email,
+      password: body.password,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      birthday: body.birthday,
+      gender:body.gender,
+      location:{
+        address: body.address
+      },
+      interestGenders: body.intrestGenders,
+      freeTimes: body.freeTimes
+    });
 
-      return res.json(user);
+    user.save(function(err, u){
+      if(err != null) {
+        res.status(500);
+        res.json({message: "could not save user. err: "+err});
+      }else{
+        //remove password from user object.
+        u.password = "";
+      //response status 200.
+        res.status(200);
+        //send response.
+        res.json(u);
+      }
     });
 
   });

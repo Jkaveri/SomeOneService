@@ -39,6 +39,12 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser()); //use for read cookie.
 
 
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //load api controllers
 app.use('/api', controllerLoader(path.join(__dirname, 'api_controllers'), null));
 //load client controller.

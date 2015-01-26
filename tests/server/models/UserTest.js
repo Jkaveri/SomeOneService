@@ -102,9 +102,4 @@ describe('models/User', function () {
     });
 
 
-    it('should have "picture" property', function () {
-        var user = createUser();
-        user.should.have.property('picture');
-    });
-
 });
