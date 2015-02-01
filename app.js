@@ -18,6 +18,10 @@ var app = express();
 
 var db = require('./lib/DB');
 
+var config = require('./config');
+
+var Agenda = require('agenda');
+
 //set public path that can be access from client.
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
@@ -83,6 +87,15 @@ app.use(function(err, req, res, next) {
   });
   //  res.render('error', {});
 });
+//AGENDA define.
+var agenda = new Agenda({
+  db:{address:config.get('mongo:url')}
+});
 
+agenda.define('select couple',require('./Jobs/SelectCoupleJob'));
+
+agenda.every('1 minutes','select couple');
+
+agenda.start();
 
 module.exports = app;
