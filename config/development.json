@@ -1,5 +1,12 @@
 {
    "mongo":{
        "url":"mongodb://localhost:27017/SomeOne"
-   }
+   },
+  "android":{
+    "gcm":{
+      "project_id":"valued-odyssey-846 ",
+      "project_number":"849038283746",
+      "api_key":"AIzaSyAqkCMyJqK_9uob9V1D14OXltkMym6dmqw"
+    }
+  }
 }

@@ -47,9 +47,8 @@ var UserSchema = new Schema({
     type:Date,
     required:true
   },
-  location: {
-    latitude: Number,
-    longitude: Number,
+  address: {
+    loc: [],
     name: String,
     address:String,
     city:String,
@@ -104,7 +103,7 @@ UserSchema.methods = {
              for(var h = 0; h < ft2.items.length; h++){
                var t1 = ft.times[k];
                var t2 = ft2.times[h];
-               if(t1.time === t2.time && t1.duration <= t2.duration)
+               if(t1.time === t2.time)
                {
                  flag = true;
                  break;
