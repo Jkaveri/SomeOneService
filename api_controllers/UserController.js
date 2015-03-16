@@ -14,7 +14,7 @@ module.exports = function(router, passport) {
   /**
    * GET: api/users
    */
-  router.get('/users', function(req, res) {
+  router.get('/Users', function(req, res) {
     var users = [];
     res.json(users);
   });
@@ -23,7 +23,7 @@ module.exports = function(router, passport) {
   /**
    * POST: api/users
    */
-  router.post('/users',function(req, res){
+  router.post('/Users',function(req, res){
     var body = req.body;
 
     var user = new User({

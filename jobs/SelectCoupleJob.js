@@ -16,16 +16,18 @@
 // B1: select peop
 //
 
+var config = require('../config');
 
 var User = require('../models/User').model;
+
 var Q = require('q');
-var CollectionUtil = require('../lib/CollectionUtil');
+var CollectionUtil = require('../lib/CollectionUtils');
 var _ = require('lodash');
 var Appointment = require('../models/Appointment').model;
 var Place = require('../models/Place').model;
 var gcm = require('node-gcm');
 var message = new gcm.Message();
-var sender = new gcm.Sender('');
+var sender = new gcm.Sender(config.get('android.gcm.api_key'));
 
 
 

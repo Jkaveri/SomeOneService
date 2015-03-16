@@ -60,7 +60,7 @@ var UserSchema = new Schema({
   freeTimes:[FreeTimeSchema],
   rank:{
     type:Number,
-    default:1,
+    default:1
   },
   selected:{
     type:Boolean,
